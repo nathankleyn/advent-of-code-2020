@@ -1,20 +1,20 @@
 use std::ops::RangeInclusive;
 
 #[allow(dead_code)]
-fn day_1_part_1(input: &str) -> usize {
-    let passcodes  = day_1_parse(input);
+fn day_2_part_1(input: &str) -> usize {
+    let passcodes  = day_2_parse(input);
     let validator = CharCountRuleValidator {};
     passcodes.iter().filter(|p| p.is_valid(&validator)).count()
 }
 
 #[allow(dead_code)]
-fn day_1_part_2(input: &str) -> usize {
-    let passcodes  = day_1_parse(input);
+fn day_2_part_2(input: &str) -> usize {
+    let passcodes  = day_2_parse(input);
     let validator = CharPositionRuleValidator {};
     passcodes.iter().filter(|p| p.is_valid(&validator)).count()
 }
 
-fn day_1_parse(input: &str) -> Vec<PasscodeAndRule> {
+fn day_2_parse(input: &str) -> Vec<PasscodeAndRule> {
     input.lines()
         .filter(|line| !line.is_empty())
         .map(|line| {
@@ -96,25 +96,25 @@ impl RuleValidator for CharPositionRuleValidator {
 
 #[cfg(test)]
 mod tests {
-    use super::{day_1_part_1, day_1_part_2};
+    use super::{day_2_part_1, day_2_part_2};
 
     #[test]
-    fn day_1_part_1_examples() {
-        assert_eq!(day_1_part_1("1-3 a: abcde\n1-3 b: cdefg\n2-9 c: ccccccccc"), 2);
+    fn day_2_part_1_examples() {
+        assert_eq!(day_2_part_1("1-3 a: abcde\n1-3 b: cdefg\n2-9 c: ccccccccc"), 2);
     }
 
     #[test]
-    fn day_1_part_1_test_input() {
-        assert_eq!(day_1_part_1(include_str!("input")), 500);
+    fn day_2_part_1_test_input() {
+        assert_eq!(day_2_part_1(include_str!("input")), 500);
     }
 
     #[test]
-    fn day_1_part_2_examples() {
-        assert_eq!(day_1_part_2("1-3 a: abcde\n1-3 b: cdefg\n2-9 c: ccccccccc"), 1);
+    fn day_2_part_2_examples() {
+        assert_eq!(day_2_part_2("1-3 a: abcde\n1-3 b: cdefg\n2-9 c: ccccccccc"), 1);
     }
 
     #[test]
-    fn day_1_part_2_test_input() {
-        assert_eq!(day_1_part_2(include_str!("input")), 313);
+    fn day_2_part_2_test_input() {
+        assert_eq!(day_2_part_2(include_str!("input")), 313);
     }
 }
